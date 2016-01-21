@@ -1,0 +1,13 @@
+{application, ffmpeg,
+ [
+  {description, "ffmpeg for Erlang"},
+  {vsn, "0.0.1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {modules, []},
+  {mod, { ffmpeg_app, []}},
+  {env, []}
+ ]}.
