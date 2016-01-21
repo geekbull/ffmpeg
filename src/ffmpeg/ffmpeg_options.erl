@@ -86,7 +86,11 @@
   {dts_delta_threshold,    output, "-dts_delta_threshold",   [{{ffmpeg_options, is_true}, to_nothing}]},
   {streamid,               output, "-streamid",              [{{erlang, is_list}, to_arg}]},
   {bitstream_filters,      output, "-bsf",                   [{{ffmpeg_options, is_list_and_list}, to_dotargs}, {{erlang, is_list}, to_arg}]},
-  {timecode,               output, "-timecode",              [{{erlang, is_list}, to_arg}]}
+  {timecode,               output, "-timecode",              [{{erlang, is_list}, to_arg}]},
+  {hls_time,               output, "-hls_time",              [{{erlang, is_integer}, to_arg}]},
+  {hls_list_size,          output, "-hls_list_size",         [{{erlang, is_integer}, to_arg}]},
+  {start_number,           output, "-start_number",          [{{erlang, is_integer}, to_arg}]},
+  {metadata_no_ar,         output, "-metadata:s:v",          [{{erlang, is_list}, to_arg}]}
 ]).
 
 options(Options) ->
