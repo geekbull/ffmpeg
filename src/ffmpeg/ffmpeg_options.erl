@@ -3,7 +3,7 @@
 -export([options/1]).
 
 -export([
-    is_true/1, 
+    is_true/1,
     is_list_and_list/1,
     is_list_and_integer/1,
     is_list_and_float/1,
@@ -11,8 +11,8 @@
     is_integer_and_list/1,
     is_integer_and_integer/1,
     is_integer_and_float/1,
-    to_nothing/1, 
-    to_arg/1, 
+    to_nothing/1,
+    to_arg/1,
     to_dotargs/1
 ]).
 
@@ -90,22 +90,23 @@
   {hls_time,               output, "-hls_time",              [{{erlang, is_integer}, to_arg}]},
   {hls_list_size,          output, "-hls_list_size",         [{{erlang, is_integer}, to_arg}]},
   {start_number,           output, "-start_number",          [{{erlang, is_integer}, to_arg}]},
-  {metadata_no_ar,         output, "-metadata:s:v",          [{{erlang, is_list}, to_arg}]}
+  {metadata_no_ar,         output, "-metadata:s:v",          [{{erlang, is_list}, to_arg}]},
+  {joint_stereo,           output, "-joint_stereo",          [{{erlang, is_integer}, to_arg}]},
 ]).
 
 options(Options) ->
   lists:foldl(fun({Option, Value}, [{input, Input}, {output, Output}, {global, Global}] = OptionStrings) ->
     case lists:keyfind(Option, 1, ?OPTIONS) of
       false ->
-        error_logger:error_msg("Invalid option ~p", [Option]), 
-        OptionStrings; 
+        error_logger:error_msg("Invalid option ~p", [Option]),
+        OptionStrings;
       {Option, Level, Param, Validators} ->
         Str = build_option_string(Param, Value, Validators),
         case Level of
           input -> [{input, Input ++ " " ++ Str}, {output, Output}, {global, Global}];
           output -> [{input, Input}, {output, Output ++ " " ++ Str}, {global, Global}];
           global -> [{input, Input}, {output, Output}, {global, Global ++ " " ++ Str}];
-          _ -> 
+          _ ->
             error_logger:error_msg("Invalid level ~p for option ~p", [Level, Option]),
             OptionStrings
         end
