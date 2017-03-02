@@ -92,7 +92,7 @@
   {start_number,           output, "-start_number",          [{{erlang, is_integer}, to_arg}]},
   {metadata_no_ar,         output, "-metadata:s:v",          [{{erlang, is_list}, to_arg}]},
   {joint_stereo,           output, "-joint_stereo",          [{{erlang, is_integer}, to_arg}]},
-  {preset,                 global, "-preset",                [{{erlang, is_list}, to_arg}]}
+  {preset,                 output, "-preset",                [{{erlang, is_list}, to_arg}]}
 ]).
 
 options(Options) ->
